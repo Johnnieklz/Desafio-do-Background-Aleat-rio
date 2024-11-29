@@ -1,0 +1,35 @@
+<button>Mudar Cor de Fundo</button>
+<br />
+<p id="color-info"></p>
+<script>
+  var btn = document.querySelector("button");
+  var colorInfo = document.getElementById("color-info");
+
+  function random(number) {
+    return Math.floor(Math.random() * (number + 1));
+  }
+
+  function rgbToHex(r, g, b) {
+    return (
+      "#" +
+      [r, g, b]
+        .map((x) => {
+          const hex = x.toString(16);
+          return hex.length === 1 ? "0" + hex : hex;
+        })
+        .join("")
+    );
+  }
+
+  btn.onclick = function () {
+    var r = random(255);
+    var g = random(255);
+    var b = random(255);
+    var rndCol = `rgb(${r},${g},${b})`;
+
+    document.body.style.backgroundColor = rndCol;
+
+    var hexColor = rgbToHex(r, g, b);
+    colorInfo.textContent = `Cor: ${rndCol} | Hex: ${hexColor}`;
+  };
+</script>
